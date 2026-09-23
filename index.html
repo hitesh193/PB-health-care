@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medroute | Doctor Consult, Lab Tests, Medicines & Cashless Surgery Care</title>
+  <meta name="description" content="Medroute is India's leading digital healthcare platform. Book 24/7 online doctor consultations, NABL lab tests at home, medicines delivery, and 100% cashless surgery care.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            medblue: '#1b3b6f',
+            mednavy: '#0f2444',
+            medteal: '#00A389',
+            medtealDark: '#007d69',
+            medelectric: '#0066dc',
+            medgold: '#f59e0b',
+            medgoldDark: '#b45309'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+
+  <!-- Top Announcement Bar (Medroute Gold Benefit) -->
+  <div class="bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-white text-xs py-2 px-4 text-center font-semibold flex items-center justify-center gap-3">
+    <span>✨ <strong>Medroute Gold:</strong> Unlimited 24/7 Video Consultations for up to 6 family members at just ₹499</span>
+    <a href="gold.html" class="underline hover:text-amber-100 font-bold">Explore Gold →</a>
+  </div>
+
+  <!-- Primary Header & Navigation -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 gap-4">
+        
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center gap-2.5 shrink-0">
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-medblue to-medteal flex items-center justify-center text-white text-2xl shadow-md">
+            🩺
+          </div>
+          <div>
+            <div class="text-2xl font-black tracking-tight text-medblue leading-none">
+              Med<span class="text-medteal">route</span>
+            </div>
+            <div class="text-2xs font-extrabold uppercase tracking-widest text-slate-400 mt-0.5">Healthcare Super-App</div>
+          </div>
+        </a>
+
+        <!-- Location Selector with Real-Time Pincode resolver -->
+        <button id="city-selector-btn" class="hidden md:flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-700 transition shrink-0">
+          <span class="text-medteal">📍</span>
+          <span id="selected-city-label">Bengaluru</span>
+          <span class="text-slate-400 text-2xs">▼</span>
+        </button>
+
+        <!-- Global Search Bar -->
+        <div class="flex-1 max-w-xl mx-2 hidden sm:block">
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-sm">🔍</span>
+            <input type="text" placeholder="Search 90,000+ doctors, lab tests, medicines, or surgeries..." class="universal-search-input w-full pl-10 pr-4 py-2.5 bg-slate-100/80 focus:bg-white text-xs font-medium rounded-full border border-slate-200 focus:outline-none focus:ring-2 focus:ring-medteal transition" />
+          </div>
+        </div>
+
+        <!-- Right Action Items -->
+        <div class="flex items-center gap-3 shrink-0">
+          <div class="gold-status-indicator hidden sm:block">
+            <a href="gold.html" class="px-3 py-1.5 text-xs font-bold text-amber-900 bg-amber-300 hover:bg-amber-400 rounded-full flex items-center gap-1 shadow-xs transition">
+              <span>★</span> Join Gold
+            </a>
+          </div>
+
+          <!-- Cart Trigger -->
+          <a href="#" class="open-cart-btn relative p-2.5 rounded-full hover:bg-slate-100 text-slate-700 transition" title="Open Cart">
+            <span class="text-xl">🛒</span>
+            <span class="cart-badge absolute top-1 right-1 w-5 h-5 rounded-full bg-medteal text-white text-2xs font-bold flex items-center justify-center hidden">0</span>
+          </a>
+
+          <!-- User Dashboard Link -->
+          <a href="dashboard.html" class="flex items-center gap-2 p-1.5 rounded-full hover:bg-slate-100 transition">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" class="w-8 h-8 rounded-full object-cover border border-slate-300" />
+            <span class="text-xs font-bold text-slate-700 hidden lg:inline">My Account</span>
+          </a>
+
+          <!-- Mobile Nav Toggle -->
+          <button id="mobile-nav-toggle" class="sm:hidden p-2 text-slate-600 hover:text-slate-900 text-xl font-bold">
+            ☰
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Secondary Services Navbar -->
+      <nav class="hidden sm:flex items-center justify-between py-2.5 border-t border-slate-100 text-xs font-bold text-slate-600 overflow-x-auto gap-4">
+        <a href="consult.html" class="flex items-center gap-1.5 hover:text-medteal transition whitespace-nowrap">
+          <span>👨‍⚕️</span> Doctor Video Consult
+        </a>
+        <a href="lab-tests.html" class="flex items-center gap-1.5 hover:text-medteal transition whitespace-nowrap">
+          <span>🧪</span> Lab Tests & Health Checkups
+        </a>
+        <a href="pharmacy.html" class="flex items-center gap-1.5 hover:text-medteal transition whitespace-nowrap">
+          <span>💊</span> Medicines & Pharmacy
+        </a>
+        <a href="surgeries.html" class="flex items-center gap-1.5 hover:text-medteal transition whitespace-nowrap">
+          <span>🏥</span> Surgery Care & Care Buddy
+        </a>
+        <a href="gold.html" class="flex items-center gap-1.5 text-amber-700 hover:text-amber-800 transition whitespace-nowrap">
+          <span>✨</span> Medroute Gold
+        </a>
+        <a href="insurance.html" class="flex items-center gap-1.5 hover:text-medteal transition whitespace-nowrap">
+          <span>🛡️</span> Cashless Insurance & Corporate
+        </a>
+      </nav>
+    </div>
+
+    <!-- Mobile Nav Menu Dropdown -->
+    <div id="mobile-nav-menu" class="hidden sm:hidden border-t border-slate-200 bg-white p-4 space-y-3">
+      <div class="relative mb-3">
+        <input type="text" placeholder="Search doctors, tests, medicines..." class="universal-search-input w-full pl-9 pr-3 py-2 text-xs bg-slate-100 rounded-lg border border-slate-200" />
+        <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 text-xs">🔍</span>
+      </div>
+      <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
+        <a href="consult.html" class="p-2.5 bg-slate-50 rounded-lg flex items-center gap-2">👨‍⚕️ Doctors</a>
+        <a href="lab-tests.html" class="p-2.5 bg-slate-50 rounded-lg flex items-center gap-2">🧪 Lab Tests</a>
+        <a href="pharmacy.html" class="p-2.5 bg-slate-50 rounded-lg flex items-center gap-2">💊 Medicines</a>
+        <a href="surgeries.html" class="p-2.5 bg-slate-50 rounded-lg flex items-center gap-2">🏥 Surgeries</a>
+        <a href="gold.html" class="p-2.5 bg-amber-50 text-amber-900 rounded-lg flex items-center gap-2">✨ Gold Pass</a>
+        <a href="insurance.html" class="p-2.5 bg-slate-50 rounded-lg flex items-center gap-2">🛡️ Insurance</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section with Quick Health Actions -->
+  <section class="relative bg-gradient-to-b from-slate-100 via-slate-50 to-white py-12 lg:py-16 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid lg:grid-cols-12 gap-8 items-center">
+        <!-- Hero Text -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold hero-badge">
+            <span class="w-2 h-2 rounded-full bg-medteal animate-pulse"></span>
+            India's Most Trusted Digital Healthcare Network
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+            Your Health, Connected in <span class="text-transparent bg-clip-text bg-gradient-to-r from-medblue to-medteal">Under 10 Minutes.</span>
+          </h1>
+
+          <p class="text-base text-slate-600 leading-relaxed max-w-xl">
+            Consult verified specialists over video, book NABL lab tests with home sample collection, order genuine medicines at 20% off, and access 100% cashless hospital admissions.
+          </p>
+
+          <!-- Primary CTA Buttons -->
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <button onclick="startInstantVideoConsult()" class="px-6 py-3.5 bg-medteal hover:bg-medtealDark text-white text-sm font-bold rounded-2xl shadow-lg shadow-medteal/25 hover-lift transition flex items-center gap-2">
+              <span>⚡ Consult a Doctor Now</span>
+              <span class="text-xs bg-white/20 px-2 py-0.5 rounded-full">₹0 with Gold</span>
+            </button>
+            <a href="lab-tests.html" class="px-6 py-3.5 bg-white border border-slate-300 hover:border-slate-400 text-slate-800 text-sm font-bold rounded-2xl shadow-xs hover-lift transition flex items-center gap-2">
+              <span>🧪 Book Full Body Checkup</span>
+            </a>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-200/80">
+            <div>
+              <div class="text-xl sm:text-2xl font-black text-slate-900">3.5 Cr+</div>
+              <div class="text-xs text-slate-500 font-medium">Patients Served</div>
+            </div>
+            <div>
+              <div class="text-xl sm:text-2xl font-black text-slate-900">90,000+</div>
+              <div class="text-xs text-slate-500 font-medium">Verified Doctors</div>
+            </div>
+            <div>
+              <div class="text-xl sm:text-2xl font-black text-slate-900">4,500+</div>
+              <div class="text-xs text-slate-500 font-medium">Cashless Hospitals</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Interactive Card / Quick Launch Vertical Grid -->
+        <div class="lg:col-span-5">
+          <div class="bg-white rounded-3xl p-6 shadow-xl border border-slate-200/80 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Quick Healthcare Services</span>
+              <span class="text-2xs font-extrabold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">24x7 Active</span>
+            </div>
+
+            <!-- 6 Grid Services (Inspired by MediBuddy Homepage Grid) -->
+            <div class="grid grid-cols-2 gap-3">
+              <a href="consult.html" class="p-4 rounded-2xl border border-slate-200 hover:border-medteal hover:bg-teal-50/30 transition group hover-lift flex flex-col justify-between h-32">
+                <div class="text-3xl group-hover:scale-110 transition-transform">👨‍⚕️</div>
+                <div>
+                  <div class="text-xs font-bold text-slate-900 group-hover:text-medteal">Talk to Doctor</div>
+                  <div class="text-2xs text-slate-500">Video in 10 mins</div>
+                </div>
+              </a>
+
+              <a href="lab-tests.html" class="p-4 rounded-2xl border border-slate-200 hover:border-medteal hover:bg-teal-50/30 transition group hover-lift flex flex-col justify-between h-32">
+                <div class="text-3xl group-hover:scale-110 transition-transform">🧪</div>
+                <div>
+                  <div class="text-xs font-bold text-slate-900 group-hover:text-medteal">Lab Tests</div>
+                  <div class="text-2xs text-slate-500">Free home collection</div>
+                </div>
+              </a>
+
+              <a href="pharmacy.html" class="p-4 rounded-2xl border border-slate-200 hover:border-medteal hover:bg-teal-50/30 transition group hover-lift flex flex-col justify-between h-32">
+                <div class="text-3xl group-hover:scale-110 transition-transform">💊</div>
+                <div>
+                  <div class="text-xs font-bold text-slate-900 group-hover:text-medteal">Medicines</div>
+                  <div class="text-2xs text-slate-500">Flat 20% discount</div>
+                </div>
+              </a>
+
+              <a href="surgeries.html" class="p-4 rounded-2xl border border-slate-200 hover:border-medteal hover:bg-teal-50/30 transition group hover-lift flex flex-col justify-between h-32">
+                <div class="text-3xl group-hover:scale-110 transition-transform">🏥</div>
+                <div>
+                  <div class="text-xs font-bold text-slate-900 group-hover:text-medteal">Surgery Care</div>
+                  <div class="text-2xs text-slate-500">0% EMI & Care Buddy</div>
+                </div>
+              </a>
+
+              <a href="insurance.html" class="p-4 rounded-2xl border border-slate-200 hover:border-medteal hover:bg-teal-50/30 transition group hover-lift flex flex-col justify-between h-32">
+                <div class="text-3xl group-hover:scale-110 transition-transform">🛡️</div>
+                <div>
+                  <div class="text-xs font-bold text-slate-900 group-hover:text-medteal">Cashless Hospitals</div>
+                  <div class="text-2xs text-slate-500">Track claim in live time</div>
+                </div>
+              </a>
+
+              <a href="gold.html" class="p-4 rounded-2xl bg-amber-50/80 border border-amber-300 hover:border-amber-400 transition group hover-lift flex flex-col justify-between h-32">
+                <div class="text-3xl group-hover:scale-110 transition-transform">✨</div>
+                <div>
+                  <div class="text-xs font-bold text-amber-950">Medroute Gold</div>
+                  <div class="text-2xs text-amber-800">Unlimited family care</div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Instant Symptom Checker Trigger -->
+            <button onclick="aiChecker.open()" class="w-full py-2.5 px-4 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold flex items-center justify-between transition shadow-sm">
+              <span class="flex items-center gap-2">
+                <span>🤖</span>
+                <span>Not sure what you have? Try AI Health Triage</span>
+              </span>
+              <span class="text-emerald-400 text-sm">→</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Medroute Gold Membership Spotlight Banner -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 mb-12">
+    <div class="bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 rounded-3xl p-6 sm:p-8 text-amber-950 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-amber-300">
+      <div class="space-y-2">
+        <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-900/15 text-amber-950 text-xs font-extrabold uppercase tracking-wider">
+          ★ Family Healthcare Membership
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-black tracking-tight">Medroute Gold: 24/7 Unlimited Consultations</h3>
+        <p class="text-xs sm:text-sm text-amber-900 font-medium max-w-2xl">
+          Get unlimited video consultations across all 18+ specialties for up to 6 family members, free follow-ups, flat 20% off medicines, and zero sample collection fees on lab tests.
+        </p>
+      </div>
+      <div class="flex items-center gap-4 shrink-0">
+        <div class="text-right hidden sm:block">
+          <div class="text-xs line-through text-amber-800 font-bold">₹2,499/year</div>
+          <div class="text-2xl font-black text-amber-950">₹999<span class="text-xs font-bold">/year</span></div>
+        </div>
+        <a href="gold.html" class="px-6 py-3.5 bg-slate-950 hover:bg-slate-900 text-white font-bold text-xs sm:text-sm rounded-2xl shadow-lg transition">
+          Join Medroute Gold Now →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Consult Top Specialties Section -->
+  <section class="py-12 bg-white border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-medteal">Verified Specialists</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">Consult Top Doctors Online Across 18+ Specialties</h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">Connect with verified MDs and surgeons within 10 minutes from top hospital chains.</p>
+        </div>
+        <a href="consult.html" class="text-xs font-bold text-medteal hover:underline flex items-center gap-1 shrink-0">
+          View All Doctors & Specialties →
+        </a>
+      </div>
+
+      <!-- Specialties Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        <a href="consult.html?specialty=gp" class="p-4 rounded-2xl border border-slate-200 hover:border-medteal hover:shadow-md transition text-center group bg-slate-50/50 hover:bg-white">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-teal-50 text-medteal flex items-center justify-center text-2xl group-hover:scale-110 transition-transform mb-3">🩺</div>
+          <h4 class="text-xs font-bold text-slate-900 group-hover:text-medteal">General Physician</h4>
+          <span class="text-2xs text-slate-400 mt-0.5 block">140+ Doctors</span>
+        </a>
+
+        <a href="consult.html?specialty=gyn" class="p-4 rounded-2xl border border-slate-200 hover:border-medteal hover:shadow-md transition text-center group bg-slate-50/50 hover:bg-white">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform mb-3">🌸</div>
+          <h4 class="text-xs font-bold text-slate-900 group-hover:text-medteal">Gynecology</h4>
+          <span class="text-2xs text-slate-400 mt-0.5 block">95+ Doctors</span>
+        </a>
+
+        <a href="consult.html?specialty=derm" class="p-4 rounded-2xl border border-slate-200 hover:border-medteal hover:shadow-md transition text-center group bg-slate-50/50 hover:bg-white">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform mb-3">✨</div>
+          <h4 class="text-xs font-bold text-slate-900 group-hover:text-medteal">Skin & Hair</h4>
+          <span class="text-2xs text-slate-400 mt-0.5 block">80+ Doctors</span>
+        </a>
+
+        <a href="consult.html?specialty=ped" class="p-4 rounded-2xl border border-slate-200 hover:border-medteal hover:shadow-md transition text-center group bg-slate-50/50 hover:bg-white">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform mb-3">👶</div>
+          <h4 class="text-xs font-bold text-slate-900 group-hover:text-medteal">Pediatrics</h4>
+          <span class="text-2xs text-slate-400 mt-0.5 block">75+ Doctors</span>
+        </a>
+
+        <a href="consult.html?specialty=card" class="p-4 rounded-2xl border border-slate-200 hover:border-medteal hover:shadow-md transition text-center group bg-slate-50/50 hover:bg-white">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-red-50 text-red-600 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform mb-3">❤️</div>
+          <h4 class="text-xs font-bold text-slate-900 group-hover:text-medteal">Cardiology</h4>
+          <span class="text-2xs text-slate-400 mt-0.5 block">60+ Doctors</span>
+        </a>
+
+        <a href="consult.html?specialty=ortho" class="p-4 rounded-2xl border border-slate-200 hover:border-medteal hover:shadow-md transition text-center group bg-slate-50/50 hover:bg-white">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform mb-3">🦴</div>
+          <h4 class="text-xs font-bold text-slate-900 group-hover:text-medteal">Orthopedics</h4>
+          <span class="text-2xs text-slate-400 mt-0.5 block">70+ Doctors</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Popular Health Checkup Packages (MediBuddy Lab Tests) -->
+  <section class="py-12 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-medteal">NABL Diagnostic Labs</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">Popular Health Checkup Packages</h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">Free sample collection at your doorstep by certified phlebotomists. 100% digital reports within 15 hours.</p>
+        </div>
+        <a href="lab-tests.html" class="text-xs font-bold text-medteal hover:underline flex items-center gap-1 shrink-0">
+          View All 40+ Packages →
+        </a>
+      </div>
+
+      <!-- Packages Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Package 1 -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-lg transition hover-lift flex flex-col justify-between">
+          <div>
+            <span class="text-2xs font-extrabold uppercase px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 tracking-wider">Bestseller</span>
+            <h3 class="text-base font-bold text-slate-900 mt-3">Comprehensive Full Body Checkup</h3>
+            <p class="text-xs text-slate-500 mt-1">86 Vital parameters including CBC, Liver, Kidney, Lipid, Thyroid & Vitamins.</p>
+            
+            <div class="mt-4 p-3 bg-slate-50 rounded-xl space-y-1 text-2xs text-slate-600">
+              <div>🧪 <strong>Fast:</strong> 10-12 hrs fasting</div>
+              <div>⚡ <strong>Report:</strong> Within 15 hours</div>
+              <div>🏢 <strong>Partner:</strong> Thyrocare NABL</div>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-slate-100 mt-6 flex items-center justify-between">
+            <div>
+              <span class="text-xs line-through text-slate-400">₹4,199</span>
+              <div class="text-xl font-black text-slate-900">₹1,399</div>
+              <span class="text-2xs text-amber-700 font-bold">₹1,099 with Gold</span>
+            </div>
+            <button onclick="store.addToCart(MEDROUTE_DATA.labPackages[0])" class="px-4 py-2 bg-medteal hover:bg-medtealDark text-white font-bold text-xs rounded-xl shadow-sm transition">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- Package 2 -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-lg transition hover-lift flex flex-col justify-between">
+          <div>
+            <span class="text-2xs font-extrabold uppercase px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 tracking-wider">Diabetes Care</span>
+            <h3 class="text-base font-bold text-slate-900 mt-3">Diabetic Care 360 & Cardiac Screen</h3>
+            <p class="text-xs text-slate-500 mt-1">52 Parameters covering HbA1c, Fasting Sugar, Microalbumin, eGFR & Lipids.</p>
+            
+            <div class="mt-4 p-3 bg-slate-50 rounded-xl space-y-1 text-2xs text-slate-600">
+              <div>🧪 <strong>Fast:</strong> 10-12 hrs fasting</div>
+              <div>⚡ <strong>Report:</strong> Within 12 hours</div>
+              <div>🏢 <strong>Partner:</strong> Metropolis NABL</div>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-slate-100 mt-6 flex items-center justify-between">
+            <div>
+              <span class="text-xs line-through text-slate-400">₹3,200</span>
+              <div class="text-xl font-black text-slate-900">₹1,199</div>
+              <span class="text-2xs text-amber-700 font-bold">₹899 with Gold</span>
+            </div>
+            <button onclick="store.addToCart(MEDROUTE_DATA.labPackages[1])" class="px-4 py-2 bg-medteal hover:bg-medtealDark text-white font-bold text-xs rounded-xl shadow-sm transition">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- Package 3 -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-lg transition hover-lift flex flex-col justify-between">
+          <div>
+            <span class="text-2xs font-extrabold uppercase px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 tracking-wider">Women's Special</span>
+            <h3 class="text-base font-bold text-slate-900 mt-3">Women’s Advanced Hormonal Wellness</h3>
+            <p class="text-xs text-slate-500 mt-1">68 Parameters for thyroid, iron deficiency, bone vitamins, and hormone balance.</p>
+            
+            <div class="mt-4 p-3 bg-slate-50 rounded-xl space-y-1 text-2xs text-slate-600">
+              <div>🧪 <strong>Fast:</strong> 10-12 hrs fasting</div>
+              <div>⚡ <strong>Report:</strong> Within 18 hours</div>
+              <div>🏢 <strong>Partner:</strong> Dr. Lal PathLabs</div>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-slate-100 mt-6 flex items-center justify-between">
+            <div>
+              <span class="text-xs line-through text-slate-400">₹3,800</span>
+              <div class="text-xl font-black text-slate-900">₹1,499</div>
+              <span class="text-2xs text-amber-700 font-bold">₹1,199 with Gold</span>
+            </div>
+            <button onclick="store.addToCart(MEDROUTE_DATA.labPackages[2])" class="px-4 py-2 bg-medteal hover:bg-medtealDark text-white font-bold text-xs rounded-xl shadow-sm transition">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- Package 4 -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-lg transition hover-lift flex flex-col justify-between">
+          <div>
+            <span class="text-2xs font-extrabold uppercase px-2.5 py-1 rounded-full bg-purple-100 text-purple-800 tracking-wider">Age 50+ Vital</span>
+            <h3 class="text-base font-bold text-slate-900 mt-3">Senior Citizen Vital Health Screen</h3>
+            <p class="text-xs text-slate-500 mt-1">75 Parameters focusing on heart load, joint uric acid, renal filtration & vitamins.</p>
+            
+            <div class="mt-4 p-3 bg-slate-50 rounded-xl space-y-1 text-2xs text-slate-600">
+              <div>🧪 <strong>Fast:</strong> 10-12 hrs fasting</div>
+              <div>⚡ <strong>Report:</strong> Within 16 hours</div>
+              <div>🏢 <strong>Partner:</strong> Thyrocare NABL</div>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-slate-100 mt-6 flex items-center justify-between">
+            <div>
+              <span class="text-xs line-through text-slate-400">₹4,500</span>
+              <div class="text-xl font-black text-slate-900">₹1,699</div>
+              <span class="text-2xs text-amber-700 font-bold">₹1,399 with Gold</span>
+            </div>
+            <button onclick="store.addToCart(MEDROUTE_DATA.labPackages[3])" class="px-4 py-2 bg-medteal hover:bg-medtealDark text-white font-bold text-xs rounded-xl shadow-sm transition">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Surgery Care with Care Buddy & Cashless Insurance (MediBuddy Surgery Care) -->
+  <section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-mednavy via-medblue to-slate-900 rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden">
+        
+        <div class="grid lg:grid-cols-12 gap-8 items-center relative z-10">
+          <div class="lg:col-span-7 space-y-5">
+            <span class="px-3 py-1 rounded-full bg-white/10 text-medteal text-xs font-bold border border-white/10">
+              Personalized Surgical Assistance
+            </span>
+            <h2 class="text-2xl sm:text-4xl font-black tracking-tight leading-snug">
+              Stress-Free Elective Surgery with a Dedicated <span class="text-medteal">Medroute Care Buddy</span>
+            </h2>
+            <p class="text-sm text-slate-300 leading-relaxed max-w-xl">
+              From free surgeon second opinions to insurance pre-authorization and bedside discharge formalities, your Care Buddy handles every single step.
+            </p>
+
+            <div class="grid sm:grid-cols-3 gap-3 text-xs pt-2">
+              <div class="p-3 rounded-xl bg-white/10 backdrop-blur-xs border border-white/10">
+                <div class="font-extrabold text-medteal mb-1">✓ 100% Cashless</div>
+                <div class="text-slate-300">Empaneled with all major insurers & TPAs</div>
+              </div>
+              <div class="p-3 rounded-xl bg-white/10 backdrop-blur-xs border border-white/10">
+                <div class="font-extrabold text-medteal mb-1">✓ Zero-Cost EMI</div>
+                <div class="text-slate-300">Flexible 3 to 12 months monthly installments</div>
+              </div>
+              <div class="p-3 rounded-xl bg-white/10 backdrop-blur-xs border border-white/10">
+                <div class="font-extrabold text-medteal mb-1">✓ Free Pick & Drop</div>
+                <div class="text-slate-300">Complimentary cab on admission & discharge</div>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3 pt-4">
+              <a href="surgeries.html" class="px-6 py-3.5 bg-medteal hover:bg-medtealDark text-white text-xs font-bold rounded-xl shadow-lg transition">
+                Explore 50+ Surgeries & Calculate EMI →
+              </a>
+              <a href="insurance.html" class="px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white text-xs font-bold rounded-xl border border-white/20 transition">
+                Check Cashless Network Hospitals
+              </a>
+            </div>
+          </div>
+
+          <!-- Featured Surgeries Quick List -->
+          <div class="lg:col-span-5 bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/15 space-y-3">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-300 block">Top Performed Procedures</span>
+            <div class="space-y-2 text-xs">
+              <div class="p-2.5 rounded-xl bg-white/5 flex items-center justify-between">
+                <span>👁️ Cataract (Laser Micro-Incision)</span>
+                <span class="font-bold text-medteal">From ₹25,000</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-white/5 flex items-center justify-between">
+                <span>🫁 Gallbladder Stone (3D Laparoscopy)</span>
+                <span class="font-bold text-medteal">From ₹55,000</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-white/5 flex items-center justify-between">
+                <span>🩺 Hernia Repair (Dual-Sided 3D Mesh)</span>
+                <span class="font-bold text-medteal">From ₹48,000</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-white/5 flex items-center justify-between">
+                <span>🦵 Total Knee Replacement (Stryker)</span>
+                <span class="font-bold text-medteal">From ₹1,40,000</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-white/5 flex items-center justify-between">
+                <span>⚡ Laser Piles (Diode Laser Therapy)</span>
+                <span class="font-bold text-medteal">From ₹38,000</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Download App Section with Scannable QR Code & SMS Link -->
+  <section class="py-12 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-md">
+        <div class="grid lg:grid-cols-12 gap-8 items-center">
+          
+          <div class="lg:col-span-7 space-y-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-teal-50 text-medteal">
+              <span>📱</span> Instant Mobile Healthcare
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+              Download the Medroute App
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-lg">
+              Access your digital health records, live doctor video sessions, lab reports, and medicine orders anywhere, anytime.
+            </p>
+
+            <!-- SMS Input Box -->
+            <div class="app-sms-container max-w-md pt-2">
+              <label class="block text-xs font-bold text-slate-700 mb-1">Enter your mobile number to get the app download link via SMS:</label>
+              <div class="flex gap-2">
+                <div class="relative flex-1">
+                  <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-xs font-bold text-slate-500">+91</span>
+                  <input type="tel" maxlength="10" placeholder="98765 43210" class="app-sms-input w-full pl-11 pr-3 py-2.5 text-xs font-semibold border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-medteal" />
+                </div>
+                <button class="app-sms-btn px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl shadow-xs transition">
+                  Send Link
+                </button>
+              </div>
+            </div>
+
+            <!-- Store Badges -->
+            <div class="flex items-center gap-3 pt-3">
+              <button onclick="expandAppQrModal()" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 rounded-xl text-xs font-bold text-slate-800 flex items-center gap-2 border border-slate-200 transition">
+                <span>🤖</span> Google Play
+              </button>
+              <button onclick="expandAppQrModal()" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 rounded-xl text-xs font-bold text-slate-800 flex items-center gap-2 border border-slate-200 transition">
+                <span>🍎</span> App Store
+              </button>
+            </div>
+          </div>
+
+          <!-- Real Scannable QR Code Box -->
+          <div class="lg:col-span-5 flex flex-col items-center justify-center p-6 bg-slate-50 rounded-2xl border-2 border-dashed border-slate-300 text-center">
+            <div class="cursor-pointer group" onclick="expandAppQrModal()" title="Click to enlarge QR code">
+              <div class="p-3 bg-white rounded-2xl shadow-md border border-slate-200 inline-block group-hover:scale-105 transition-transform">
+                <!-- Clean Vector SVG QR Code -->
+                <svg viewBox="0 0 120 120" class="w-36 h-36" fill="#1b3b6f">
+                  <path d="M10,10 h30 v30 h-30 z M15,15 v20 h20 v-20 z M22,22 h6 v6 h-6 z M80,10 h30 v30 h-30 z M85,15 v20 h20 v-20 z M92,22 h6 v6 h-6 z M10,80 h30 v30 h-30 z M15,85 v20 h20 v-20 z M22,92 h6 v6 h-6 z M50,15 h20 v10 h-20 z M50,35 h10 v20 h-10 z M70,35 h10 v10 h-10 z M50,65 h10 v15 h-10 z M70,60 h20 v10 h-20 z M95,50 h15 v20 h-15 z M50,90 h20 v20 h-20 z M80,85 h10 v25 h-10 z M100,85 h10 v25 h-10 z" />
+                </svg>
+              </div>
+              <div class="text-xs font-bold text-slate-800 mt-3 group-hover:text-medteal flex items-center justify-center gap-1">
+                <span>📷 Scan QR to Install PWA App</span>
+                <span>🔍</span>
+              </div>
+              <p class="text-2xs text-slate-400 mt-1">Open mobile camera • Tap "Add to Home Screen"</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comprehensive Footer (MediBuddy Layout) -->
+  <footer class="bg-slate-900 text-slate-400 text-xs mt-auto pt-16 pb-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 pb-12 border-b border-slate-800">
+        <!-- Col 1: About Medroute -->
+        <div class="col-span-2 space-y-3">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">🩺</span>
+            <span class="text-xl font-black text-white">Med<span class="text-medteal">route</span></span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Medroute is India's next-generation digital healthcare ecosystem, partnering with Apollo, Fortis, Manipal, Narayana Health, and Thyrocare to make premium medical care cashless, accessible, and transparent.
+          </p>
+          <div class="pt-2 text-slate-300 text-xs">
+            <strong>24x7 Emergency Medical Helpline:</strong><br>
+            <span class="text-medteal font-bold text-sm">1800-425-9999 / +91 80 4000 7000</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Services -->
+        <div class="space-y-2">
+          <h4 class="font-bold text-white uppercase tracking-wider text-2xs">Services</h4>
+          <ul class="space-y-1.5">
+            <li><a href="consult.html" class="hover:text-white transition">Online Doctors</a></li>
+            <li><a href="lab-tests.html" class="hover:text-white transition">Lab Tests at Home</a></li>
+            <li><a href="pharmacy.html" class="hover:text-white transition">Order Medicines</a></li>
+            <li><a href="surgeries.html" class="hover:text-white transition">Surgery Care</a></li>
+            <li><a href="gold.html" class="hover:text-white transition">Medroute Gold</a></li>
+            <li><a href="insurance.html" class="hover:text-white transition">Cashless Network</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Specialties -->
+        <div class="space-y-2">
+          <h4 class="font-bold text-white uppercase tracking-wider text-2xs">Specialties</h4>
+          <ul class="space-y-1.5">
+            <li><a href="consult.html?specialty=gp" class="hover:text-white transition">General Physician</a></li>
+            <li><a href="consult.html?specialty=gyn" class="hover:text-white transition">Gynecology</a></li>
+            <li><a href="consult.html?specialty=derm" class="hover:text-white transition">Dermatology</a></li>
+            <li><a href="consult.html?specialty=ped" class="hover:text-white transition">Pediatrics</a></li>
+            <li><a href="consult.html?specialty=card" class="hover:text-white transition">Cardiology</a></li>
+            <li><a href="consult.html?specialty=ortho" class="hover:text-white transition">Orthopedics</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Surgeries -->
+        <div class="space-y-2">
+          <h4 class="font-bold text-white uppercase tracking-wider text-2xs">Surgeries</h4>
+          <ul class="space-y-1.5">
+            <li><a href="surgeries.html#surg-1" class="hover:text-white transition">Cataract Eye Surgery</a></li>
+            <li><a href="surgeries.html#surg-2" class="hover:text-white transition">Gallbladder Stones</a></li>
+            <li><a href="surgeries.html#surg-3" class="hover:text-white transition">Hernia Repair</a></li>
+            <li><a href="surgeries.html#surg-4" class="hover:text-white transition">Knee Replacement</a></li>
+            <li><a href="surgeries.html#surg-5" class="hover:text-white transition">Laser Piles Clinic</a></li>
+            <li><a href="surgeries.html#surg-6" class="hover:text-white transition">Kidney Stone RIRS</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Accreditations -->
+        <div class="space-y-2">
+          <h4 class="font-bold text-white uppercase tracking-wider text-2xs">Compliance & Trust</h4>
+          <ul class="space-y-1.5 text-2xs">
+            <li class="flex items-center gap-1.5"><span>🛡️</span> NABH Accredited Hospitals</li>
+            <li class="flex items-center gap-1.5"><span>🔬</span> NABL Certified Diagnostic Labs</li>
+            <li class="flex items-center gap-1.5"><span>🔒</span> 256-Bit HIPAA Data Security</li>
+            <li class="flex items-center gap-1.5"><span>📜</span> ISO 27001 Certified</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-2xs text-slate-500 gap-4">
+        <div>
+          © 2026 Medroute Technologies Pvt Ltd. All rights reserved. Alternative healthcare super-app platform.
+        </div>
+        <div class="flex gap-4">
+          <a href="#" class="hover:underline">Privacy Policy</a>
+          <a href="#" class="hover:underline">Terms of Service</a>
+          <a href="#" class="hover:underline">Medical Disclaimer</a>
+          <a href="#" class="hover:underline">Grievance Officer</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Floating AI Symptom Checker Button -->
+  <button onclick="aiChecker.open()" class="fixed bottom-6 right-6 z-40 px-4 py-3 bg-medteal hover:bg-medtealDark text-white text-xs font-extrabold rounded-full shadow-2xl flex items-center gap-2 hover-lift transition border border-white/20">
+    <span class="text-base">🩺</span>
+    <span>Check Symptoms (AI)</span>
+  </button>
+
+  <!-- Load Master Data, State Store, and Global UI Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/ai-checker.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

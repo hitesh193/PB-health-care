@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surgery Care & Care Buddy | Medroute - 100% Cashless Elective Surgeries</title>
+  <meta name="description" content="Hassle-free surgery care with Medroute. 50+ elective surgeries, dedicated personal Care Buddy, 100% cashless insurance coverage, zero-cost EMI, and free second opinions.">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            medblue: '#1b3b6f',
+            mednavy: '#0f2444',
+            medteal: '#00A389',
+            medtealDark: '#007d69',
+            medelectric: '#0066dc',
+            medgold: '#f59e0b'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 gap-4">
+        
+        <a href="index.html" class="flex items-center gap-2.5 shrink-0">
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-medblue to-medteal flex items-center justify-center text-white text-2xl shadow-md">
+            🩺
+          </div>
+          <div>
+            <div class="text-2xl font-black tracking-tight text-medblue leading-none">
+              Med<span class="text-medteal">route</span>
+            </div>
+            <div class="text-2xs font-extrabold uppercase tracking-widest text-slate-400 mt-0.5">Surgery Care</div>
+          </div>
+        </a>
+
+        <div class="flex-1 max-w-xl mx-2 hidden sm:block">
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-sm">🔍</span>
+            <input type="text" placeholder="Search surgeries: Cataract, Hernia, Gallbladder, Knee..." class="universal-search-input w-full pl-10 pr-4 py-2.5 bg-slate-100/80 focus:bg-white text-xs font-medium rounded-full border border-slate-200 focus:outline-none focus:ring-2 focus:ring-medteal transition" />
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 shrink-0">
+          <div class="gold-status-indicator hidden sm:block"></div>
+          <button onclick="openSurgeryCallbackModal('General Surgical Inquiry')" class="px-4 py-2 bg-medteal hover:bg-medtealDark text-white rounded-xl text-xs font-bold shadow-sm transition">
+            Book Free Second Opinion
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Secondary Services Navbar -->
+      <nav class="flex items-center justify-between py-2.5 border-t border-slate-100 text-xs font-bold text-slate-600 overflow-x-auto gap-4">
+        <a href="consult.html" class="flex items-center gap-1.5 hover:text-medteal transition whitespace-nowrap">
+          <span>👨‍⚕️</span> Doctor Video Consult
+        </a>
+        <a href="lab-tests.html" class="flex items-center gap-1.5 hover:text-medteal transition whitespace-nowrap">
+          <span>🧪</span> Lab Tests & Health Checkups
+        </a>
+        <a href="pharmacy.html" class="flex items-center gap-1.5 hover:text-medteal transition whitespace-nowrap">
+          <span>💊</span> Medicines & Pharmacy
+        </a>
+        <a href="surgeries.html" class="flex items-center gap-1.5 text-medteal border-b-2 border-medteal pb-1 whitespace-nowrap">
+          <span>🏥</span> Surgery Care & Care Buddy
+        </a>
+        <a href="gold.html" class="flex items-center gap-1.5 text-amber-700 hover:text-amber-800 transition whitespace-nowrap">
+          <span>✨</span> Medroute Gold
+        </a>
+        <a href="insurance.html" class="flex items-center gap-1.5 hover:text-medteal transition whitespace-nowrap">
+          <span>🛡️</span> Cashless Insurance & Corporate
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-mednavy via-medblue to-slate-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-8 items-center">
+        
+        <div class="lg:col-span-7 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-medteal text-xs font-bold border border-white/15">
+            <span>🤝</span> Dedicated Personal Concierge Included
+          </div>
+          <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+            Seamless Surgery Care with Your <span class="text-medteal">Medroute Care Buddy</span>
+          </h1>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xl">
+            Undergoing a medical procedure shouldn’t be complicated. We guide you from surgeon selection and cashless TPA paperwork to admission, bedside recovery, and post-op care.
+          </p>
+          <div class="flex flex-wrap gap-4 pt-2 text-xs text-slate-200">
+            <span class="flex items-center gap-1.5"><span>🛡️</span> 100% Cashless Approval</span>
+            <span class="flex items-center gap-1.5"><span>💳</span> No-Cost EMI Starting ₹2,916/mo</span>
+            <span class="flex items-center gap-1.5"><span>🚕</span> Free Admission & Discharge Cab</span>
+          </div>
+        </div>
+
+        <!-- Care Buddy Feature Highlights -->
+        <div class="lg:col-span-5 bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/15 space-y-3">
+          <h3 class="text-sm font-bold text-white flex items-center gap-2">
+            <span>✨</span> How Your Care Buddy Assists You:
+          </h3>
+          <ul class="space-y-2.5 text-xs text-slate-300">
+            <li class="flex items-start gap-2">
+              <span class="text-medteal font-bold text-sm">1.</span>
+              <span><strong>Top Surgeon Matching:</strong> Connects you with senior surgeons with 15+ years experience.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-medteal font-bold text-sm">2.</span>
+              <span><strong>Cashless Insurance Pre-Auth:</strong> Coordinates directly with your insurer/TPA within 60 minutes.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-medteal font-bold text-sm">3.</span>
+              <span><strong>Hospital Bedside Coordination:</strong> Assists with admission paperwork and private room upgrades.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-medteal font-bold text-sm">4.</span>
+              <span><strong>Hassle-Free Discharge:</strong> Coordinates discharge summary, meds kit, and free follow-up visits.</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Zero-Cost EMI Calculator -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
+    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-slate-100">
+        <div>
+          <span class="text-2xs font-extrabold uppercase px-2.5 py-1 rounded-full bg-teal-100 text-teal-800 tracking-wider">Financial Wellness</span>
+          <h3 class="text-lg sm:text-xl font-black text-slate-900 mt-2">Zero-Cost EMI Surgery Cost Calculator</h3>
+          <p class="text-xs text-slate-500">Calculate easy monthly installments with 0% interest and zero processing fees.</p>
+        </div>
+        <div class="text-right bg-slate-50 p-4 rounded-2xl border border-slate-200 shrink-0">
+          <span class="text-2xs text-slate-400 block font-medium">Estimated Monthly Installment:</span>
+          <span id="calculated-emi-display" class="text-2xl sm:text-3xl font-black text-medteal">₹5,416</span>
+          <span class="text-2xs text-slate-500 block">/ month for <span id="tenure-display">12</span> months</span>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 pt-6">
+        <!-- Slider 1: Treatment Cost -->
+        <div>
+          <div class="flex justify-between items-center text-xs font-bold text-slate-700 mb-2">
+            <span>Procedure / Treatment Cost:</span>
+            <span id="treatment-cost-label" class="text-sm font-extrabold text-slate-900">₹65,000</span>
+          </div>
+          <input type="range" id="treatment-cost-slider" min="25000" max="250000" step="5000" value="65000" oninput="updateEmiCalculator()" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-teal-600" />
+          <div class="flex justify-between text-2xs text-slate-400 mt-1">
+            <span>₹25,000 (Cataract/Day Care)</span>
+            <span>₹2,50,000 (Knee/Hip Replacement)</span>
+          </div>
+        </div>
+
+        <!-- Slider 2: EMI Tenure -->
+        <div>
+          <div class="flex justify-between items-center text-xs font-bold text-slate-700 mb-2">
+            <span>Repayment Tenure (Months):</span>
+            <span id="tenure-label" class="text-sm font-extrabold text-slate-900">12 Months (0% Interest)</span>
+          </div>
+          <div class="grid grid-cols-4 gap-2">
+            <button type="button" class="emi-tenure-btn py-2 border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-bold rounded-xl" onclick="selectTenure(this, 3)">3 Mo</button>
+            <button type="button" class="emi-tenure-btn py-2 border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-bold rounded-xl" onclick="selectTenure(this, 6)">6 Mo</button>
+            <button type="button" class="emi-tenure-btn py-2 border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-bold rounded-xl" onclick="selectTenure(this, 9)">9 Mo</button>
+            <button type="button" class="emi-tenure-btn py-2 border border-medteal bg-teal-50 text-medteal text-xs font-bold rounded-xl" onclick="selectTenure(this, 12)">12 Mo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Surgeries Catalog Grid -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1 space-y-8">
+    <div>
+      <span class="text-xs font-bold uppercase tracking-wider text-medteal">Elective & Day Care Procedures</span>
+      <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">Explore 50+ Common Surgeries</h2>
+      <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Performed at NABH/JCI accredited partner hospitals with verified clinical standards.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6" id="surgeries-grid">
+      <!-- Injected via JS -->
+    </div>
+  </main>
+
+  <!-- Free Second Opinion Request Modal -->
+  <div id="surgery-callback-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs hidden">
+    <div class="bg-white rounded-3xl shadow-2xl max-w-lg w-full overflow-hidden animate-slide-down border border-slate-100">
+      <div class="bg-slate-900 p-5 text-white flex items-center justify-between">
+        <div>
+          <h3 class="font-bold text-base">Request Free Surgery Second Opinion</h3>
+          <p class="text-xs text-teal-400" id="modal-surgery-name">Cataract Eye Surgery</p>
+        </div>
+        <button onclick="closeSurgeryCallbackModal()" class="text-white/80 hover:text-white text-2xl font-bold">✕</button>
+      </div>
+
+      <div class="p-6 space-y-4 text-xs">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Patient Full Name:</label>
+          <input type="text" id="modal-patient-name" placeholder="e.g. Ramesh Verma" class="w-full p-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-medteal" />
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Mobile Number:</label>
+            <input type="tel" id="modal-patient-phone" placeholder="98765 43210" class="w-full p-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-medteal" />
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">City for Admission:</label>
+            <select id="modal-patient-city" class="w-full p-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-medteal font-semibold">
+              <option value="Bengaluru">Bengaluru</option>
+              <option value="Delhi - NCR">Delhi - NCR</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Chennai">Chennai</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Do you have Health Insurance?:</label>
+          <div class="grid grid-cols-2 gap-2">
+            <button type="button" class="ins-toggle-btn p-2 rounded-lg border border-medteal bg-teal-50 text-medteal font-bold" onclick="selectIns(this, true)">Yes, Cashless Desired</button>
+            <button type="button" class="ins-toggle-btn p-2 rounded-lg border border-slate-200 text-slate-700 font-medium" onclick="selectIns(this, false)">No (Want 0% EMI)</button>
+          </div>
+        </div>
+
+        <div class="p-3 bg-slate-50 rounded-xl text-slate-500 space-y-1">
+          <div>✓ Your Care Buddy will call you within 15 minutes</div>
+          <div>✓ Free surgeon consultation & cost estimate sheet provided</div>
+        </div>
+
+        <button onclick="submitSurgeryInquiry()" class="w-full py-3 bg-medteal hover:bg-medtealDark text-white font-bold text-xs rounded-xl shadow-md transition">
+          Submit Surgery Request →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 text-xs mt-auto py-8 border-t border-slate-800 text-center">
+    <div class="max-w-7xl mx-auto px-4">
+      © 2026 Medroute Technologies Pvt Ltd • 100% Cashless Surgery Network
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/ai-checker.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    let selectedTenureMonths = 12;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderSurgeries();
+      updateEmiCalculator();
+    });
+
+    function renderSurgeries() {
+      const container = document.getElementById('surgeries-grid');
+      container.innerHTML = MEDROUTE_DATA.surgeries.map(s => `
+        <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-lg transition hover-lift flex flex-col justify-between" id="${s.id}">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-2xs font-extrabold uppercase px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 tracking-wider">${s.category}</span>
+              <span class="text-2xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">✓ ${s.cashlessEligible ? '100% Cashless Eligible' : '0% EMI Available'}</span>
+            </div>
+
+            <h3 class="text-base font-bold text-slate-900 mt-3">${s.name}</h3>
+            <div class="text-xs text-medteal font-semibold mt-0.5">${s.clinicalTerm}</div>
+            <p class="text-xs text-slate-600 mt-2 leading-relaxed">${s.desc}</p>
+
+            <div class="grid grid-cols-2 gap-2 my-4 p-3 bg-slate-50 rounded-2xl text-2xs text-slate-600">
+              <div>⏱️ <strong>Procedure Time:</strong> ${s.duration}</div>
+              <div>🏥 <strong>Hospital Stay:</strong> ${s.hospitalStay}</div>
+              <div>💉 <strong>Anesthesia:</strong> ${s.anesthesia}</div>
+              <div>⚡ <strong>Recovery:</strong> ${s.recoveryTime}</div>
+            </div>
+
+            <div class="space-y-1 text-2xs text-slate-600 mb-2">
+              ${s.inclusions.map(inc => `<div class="flex items-center gap-1.5"><span class="text-medteal font-bold">✓</span> ${inc}</div>`).join('')}
+            </div>
+          </div>
+
+          <div class="pt-5 border-t border-slate-100 mt-4 flex items-center justify-between gap-4">
+            <div>
+              <span class="text-2xs text-slate-400 block">Avg. Cost Range:</span>
+              <div class="text-base font-black text-slate-900">${s.costRange}</div>
+              <span class="text-2xs text-medteal font-bold">Or ₹${s.monthlyEmi}/mo (0% EMI)</span>
+            </div>
+            <button onclick="openSurgeryCallbackModal('${s.name}')" class="px-5 py-2.5 bg-medteal hover:bg-medtealDark text-white font-bold text-xs rounded-xl shadow-sm transition">
+              Get Free Callback
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function updateEmiCalculator() {
+      const slider = document.getElementById('treatment-cost-slider');
+      const cost = parseInt(slider.value);
+      document.getElementById('treatment-cost-label').textContent = '₹' + cost.toLocaleString('en-IN');
+
+      const emi = Math.round(cost / selectedTenureMonths);
+      document.getElementById('calculated-emi-display').textContent = '₹' + emi.toLocaleString('en-IN');
+      document.getElementById('tenure-display').textContent = selectedTenureMonths;
+    }
+
+    function selectTenure(btn, months) {
+      selectedTenureMonths = months;
+      document.querySelectorAll('.emi-tenure-btn').forEach(b => {
+        b.className = 'emi-tenure-btn py-2 border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-bold rounded-xl';
+      });
+      btn.className = 'emi-tenure-btn py-2 border border-medteal bg-teal-50 text-medteal text-xs font-bold rounded-xl';
+      document.getElementById('tenure-label').textContent = `${months} Months (0% Interest)`;
+      updateEmiCalculator();
+    }
+
+    function openSurgeryCallbackModal(surgName) {
+      document.getElementById('modal-surgery-name').textContent = surgName;
+      document.getElementById('surgery-callback-modal').classList.remove('hidden');
+    }
+
+    function closeSurgeryCallbackModal() {
+      document.getElementById('surgery-callback-modal').classList.add('hidden');
+    }
+
+    function selectIns(btn, hasIns) {
+      document.querySelectorAll('.ins-toggle-btn').forEach(b => {
+        b.className = 'ins-toggle-btn p-2 rounded-lg border border-slate-200 text-slate-700 font-medium';
+      });
+      btn.className = 'ins-toggle-btn p-2 rounded-lg border border-medteal bg-teal-50 text-medteal font-bold';
+    }
+
+    function submitSurgeryInquiry() {
+      const name = document.getElementById('modal-patient-name').value.trim() || 'Valued Patient';
+      const surg = document.getElementById('modal-surgery-name').textContent;
+
+      closeSurgeryCallbackModal();
+      store.showToast(`Thank you, ${name}! Your Medroute Care Buddy has been assigned for ${surg}. We will call you within 15 minutes.`, 'success');
+    }
+  </script>
+
+</body>
+</html>
